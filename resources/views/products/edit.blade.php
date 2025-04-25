@@ -25,7 +25,7 @@ btn-primary btn-sm">&larr; Back</a>
  <label for="code" class="col-md-4 col-formlabel text-md-end text-start">Code</label>
  <div class="col-md-6">
  <input type="text" class="form-control 
-@error('code') is-invalid @enderror" id="code" name="code" value="{{ 
+@error('code') is-invalid @enderror" id="code" name="code" value="{{   
 $product->code }}">
  @error('code')
  <span class="text-danger">{{ $message 
