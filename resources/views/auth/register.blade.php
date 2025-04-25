@@ -1,58 +1,159 @@
-<div class="min-h-screen flex items-center justify-center bg-gray-100">
-    <div class="w-full max-w-md bg-white p-8 rounded-lg shadow-lg">
-        <h2 class="text-2xl font-bold mb-6 text-center text-gray-800">Create an Account</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create an Account</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f3f4f6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
 
-        @if(session('success'))
-            <div class="bg-green-100 text-green-700 p-2 mb-4 rounded">
-                {{ session('success') }}
-            </div>
-        @endif
+        .container {
+            background-color: white;
+            width: 100%;
+            max-width: 400px;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            color: #2d3748;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            color: #4a5568;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            outline: none;
+            transition: all 0.2s ease;
+        }
+
+        input:focus {
+            border-color: #3182ce;
+            box-shadow: 0 0 0 2px rgba(49, 130, 206, 0.4);
+        }
+
+        .error {
+            color: #f56565;
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+        }
+
+        .success {
+            background-color: #f0fff4;
+            color: #48bb78;
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+            border-radius: 6px;
+        }
+
+        button {
+            width: 100%;
+            padding: 1rem;
+            background-color: #3182ce;
+            color: white;
+            font-weight: bold;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        button:hover {
+            background-color: #2b6cb0;
+        }
+
+        .login-link {
+            display: block;
+            text-align: center;
+            margin-top: 1rem;
+            color: #4a5568;
+        }
+
+        .login-link a {
+            color: #3182ce;
+            text-decoration: none;
+        }
+
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Create an Account</h2>
+
+        <!-- Success message (example) -->
+        <div class="success">
+            Registration successful!
+        </div>
 
         <form method="POST" action="{{ route('register') }}">
             @csrf
 
-            <div class="mb-4">
-                <label class="block text-gray-700 font-medium mb-2" for="name">Name</label>
-                <input name="name" id="name" type="text" placeholder="Your full name"
-                    class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400" />
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input name="name" id="name" type="text" placeholder="Your full name" />
                 @error('name')
-                    <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                    <p class="error">{{ $message }}</p>
                 @enderror
             </div>
 
-            <div class="mb-4">
-                <label class="block text-gray-700 font-medium mb-2" for="email">Email</label>
-                <input name="email" id="email" type="email" placeholder="you@example.com"
-                    class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400" />
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input name="email" id="email" type="email" placeholder="you@example.com" />
                 @error('email')
-                    <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                    <p class="error">{{ $message }}</p>
                 @enderror
             </div>
 
-            <div class="mb-4">
-                <label class="block text-gray-700 font-medium mb-2" for="password">Password</label>
-                <input name="password" id="password" type="password" placeholder="Password"
-                    class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400" />
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input name="password" id="password" type="password" placeholder="Password" />
                 @error('password')
-                    <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                    <p class="error">{{ $message }}</p>
                 @enderror
             </div>
 
-            <div class="mb-6">
-                <label class="block text-gray-700 font-medium mb-2" for="password_confirmation">Confirm Password</label>
-                <input name="password_confirmation" id="password_confirmation" type="password" placeholder="Confirm Password"
-                    class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400" />
+            <div class="form-group">
+                <label for="password_confirmation">Confirm Password</label>
+                <input name="password_confirmation" id="password_confirmation" type="password" placeholder="Confirm Password" />
             </div>
 
-            <button type="submit"
-                class="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg transition">
-                Register
-            </button>
+            <button type="submit">Register</button>
 
-            <p class="text-sm text-center mt-4 text-gray-600">
-                Already have an account?
-                <a href="{{ route('login') }}" class="text-blue-500 hover:underline">Login here</a>
-            </p>
+            <div class="login-link">
+                <p>Already have an account? <a href="{{ route('login') }}">Login here</a></p>
+            </div>
         </form>
     </div>
-</div>
+
+</body>
+</html>
