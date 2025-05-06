@@ -7,6 +7,15 @@
  {{ $value }}
  </div>
  @endsession
+ <div class="d-flex justify-content-between align-items-center mb-3">
+ <h4>Product List</h4>
+ <form action="{{ route('student.logout') }}" method="POST" class="d-inline">
+ @csrf
+ <button type="submit" class="btn btn-danger">
+ <i class="bi bi-box-arrow-right"></i> Logout
+ </button>
+ </form>
+ </div>
  <div class="card">
  <div class="card-header">Product List</div>
  <div class="card-body">
