@@ -22,8 +22,6 @@ class StudentAuthController extends Controller
             'username' => 'required|string|max:255|unique:students',
             'email' => 'required|string|email|max:255|unique:students',
             'password' => 'required|string|min:8|confirmed',
-            'first_name' => 'required|string|max:255',
-            'last_name' => 'required|string|max:255',
         ]);
 
         if ($validator->fails()) {
@@ -36,8 +34,6 @@ class StudentAuthController extends Controller
             'username' => $request->username,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'first_name' => $request->first_name,
-            'last_name' => $request->last_name,
         ]);
 
         return redirect()->route('student.login')->with('success', 'Registration successful! Please login with your credentials.');
