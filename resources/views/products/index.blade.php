@@ -7,24 +7,21 @@
  {{ $value }}
  </div>
  @endsession
- <div class="d-flex justify-content-between align-items-center mb-3">
- <h4>Product List</h4>
+ <div class="card">
+ <div class="card-header">Product List</div>
+ <div class="card-body">
  <form action="{{ route('student.logout') }}" method="POST" class="d-inline">
  @csrf
  <button type="submit" class="btn btn-danger">
  <i class="bi bi-box-arrow-right"></i> Logout
  </button>
- </form>
- </div>
- <div class="card">
- <div class="card-header">Product List</div>
- <div class="card-body">
  <a href="{{ route('products.create') }}" class="btn 
 btn-success btn-sm my-2"><i class="bi bi-plus-circle"></i> Add New 
 Product</a>
  <table class="table table-striped table-bordered">
  <thead>
  <tr>
+ <th scope="col">Image</th>
  <th scope="col">S#</th>
  <th scope="col">Code</th>
  <th scope="col">Name</th>
@@ -36,8 +33,14 @@ Product</a>
 <tbody>
  @forelse ($products as $product)
 <tr>
- <th scope="row">{{ $loop->iteration 
-}}</th>
+ <td class="text-center">
+   @if($product->image)
+     <img src="{{ Storage::url($product->image) }}" alt="Product Image" style="max-height: 50px; max-width: 50px;" class="img-thumbnail">
+   @else
+     <img src="https://via.placeholder.com/50x50?text=No+Image" alt="No Image" style="max-height: 50px; max-width: 50px;" class="img-thumbnail">
+   @endif
+ </td>
+ <th scope="row">{{ $loop->iteration }}</th>
  <td>{{ $product->code }}</td>
  <td>{{ $product->name }}</td>
  <td>{{ $product->quantity }}</td>
@@ -48,9 +51,9 @@ route('products.destroy', $product->id) }}" method="post">
  @csrf
 @method('DELETE')
  <a href="{{ route('products.show', 
-$product->id) }}" class="btn btn-warning btn-sm"><i class="bi bieye"></i> Show</a>
+$product->id) }}" class="btn btn-warning btn-sm"><i class="bi bi eye"></i> Show</a>
  <a href="{{ route('products.edit', 
-$product->id) }}" class="btn btn-primary btn-sm"><i class="bi bipencil-square"></i> Edit</a> 
+$product->id) }}" class="btn btn-primary btn-sm"><i class="bi bi pencil-square"></i> Edit</a> 
  <button type="submit" class="btn 
 btn-danger btn-sm" onclick="return confirm('Do you want to delete this 
 product?');"><i class="bi bi-trash"></i> Delete</button>
@@ -67,9 +70,3 @@ product?');"><i class="bi bi-trash"></i> Delete</button>
  </tbody>
  </table>
  {{ $products->links() }}
- </div>
- </div>
- </div> 
-</div>
- 
-@endsection
