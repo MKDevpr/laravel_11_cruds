@@ -13,14 +13,14 @@
  Edit Product
  </div>
  <div class="float-end">
- <a href="{{ route('products.index') }}" class="btn 
+ <a href="{{ route('products.index') }}" class="btn
 btn-primary btn-sm">&larr; Back</a>
  </div>
  </div>
  <div class="card-body">
   <div class="row align-items-center g-0">
     <div class="col-md-3 text-center align-self-center">
-      <label class="form-label mb-2"><strong>Current Image</strong></label>
+      <label class="form-label mb-2"><strong>Your Image</strong></label>
       @if($product->image)
         <img src="{{ Storage::url($product->image) }}" alt="Current Image" class="img-fluid rounded" style="max-height: 140px;">
       @else
@@ -94,7 +94,7 @@ btn-primary btn-sm">&larr; Back</a>
   </div>
  </div>
  </div>
-</div> 
 </div>
- 
+</div>
+
 @endsection

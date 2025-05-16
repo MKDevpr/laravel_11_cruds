@@ -1,68 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Login</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body {
-            background-color: #f8f9fa;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .login-container {
-            max-width: 400px;
-            width: 100%;
-            padding: 20px;
-        }
-        .card {
-            border: none;
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0,0,0,0.1);
-        }
-        .card-header {
-            background-color: #fff;
-            border-bottom: none;
-            padding: 20px;
-            text-align: center;
-        }
-        .card-header h3 {
-            margin: 0;
-            color: #333;
-            font-weight: 600;
-        }
-        .card-body {
-            padding: 30px;
-        }
-        .form-control {
-            border-radius: 5px;
-            padding: 12px;
-            border: 1px solid #ddd;
-        }
-        .form-control:focus {
-            box-shadow: none;
-            border-color: #0d6efd;
-        }
-        .btn-primary {
-            padding: 12px;
-            border-radius: 5px;
-            font-weight: 500;
-        }
-        .alert {
-            border-radius: 5px;
-        }
-    </style>
-</head>
-<body>
-    <div class="login-container">
-        <div class="card">
-            <div class="card-header">
-                <h3>Student Login</h3>
-            </div>
-            <div class="card-body">
+@extends('layouts.app')
+
+@section('title', 'Student Login - Student Portal')
+
+@section('content')
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card shadow">
+            <div class="card-body p-5">
+                <div class="text-center mb-4">
+                    <h2 class="h3">
+                        <i class="bi bi-mortarboard-fill text-primary me-2"></i>Student Login
+                    </h2>
+                </div>
+
                 @if ($errors->any())
                     <div class="alert alert-danger">
                         <ul class="mb-0">
@@ -77,12 +27,22 @@
                     @csrf
                     <div class="mb-3">
                         <label for="username" class="form-label">Username</label>
-                        <input type="text" class="form-control" id="username" name="username" value="{{ old('username') }}" required>
+                        <div class="input-group">
+                            <span class="input-group-text">
+                                <i class="bi bi-person"></i>
+                            </span>
+                            <input type="text" class="form-control" id="username" name="username" value="{{ old('username') }}" required>
+                        </div>
                     </div>
 
                     <div class="mb-3">
                         <label for="password" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="password" name="password" required>
+                        <div class="input-group">
+                            <span class="input-group-text">
+                                <i class="bi bi-lock"></i>
+                            </span>
+                            <input type="password" class="form-control" id="password" name="password" required>
+                        </div>
                     </div>
 
                     <div class="mb-3 form-check">
@@ -90,16 +50,24 @@
                         <label class="form-check-label" for="remember">Remember me</label>
                     </div>
 
-                    <div class="d-grid">
-                        <button type="submit" class="btn btn-primary">Login</button>
+                    <div class="d-grid mb-4">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="bi bi-box-arrow-in-right me-2"></i>Login
+                        </button>
+                    </div>
+
+                    <div class="text-center">
+                        <p class="mb-2">
+                            Don't have an account? 
+                            <a href="{{ route('student.register') }}" class="text-decoration-none">Register here</a>
+                        </p>
+                        <a href="{{ url('/') }}" class="text-decoration-none">
+                            <i class="bi bi-arrow-left me-1"></i>Back to Home
+                        </a>
                     </div>
                 </form>
-
-                <div class="text-center mt-3">
-                    <p class="mb-0">Don't have an account? <a href="{{ route('student.register') }}" class="text-decoration-none">Register here</a></p>
-                </div>
             </div>
         </div>
     </div>
-</body>
-</html> 
+</div>
+@endsection 
