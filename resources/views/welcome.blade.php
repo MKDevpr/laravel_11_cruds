@@ -86,8 +86,8 @@
 
     <div class="main-content">
         <div class="welcome-card">
-            <h1 class="welcome-title">Welcome to Student Portal</h1>
-            <p class="welcome-text">Access your student account to manage your profile and view your information.</p>
+            <h1 class="welcome-title">Welcome to Laravel Crud</h1>
+            <p class="welcome-text">Please choose an option to proceed</p>
             <div>
                 <a href="{{ route('student.login') }}" class="btn btn-primary">Login</a>
                 <a href="{{ route('student.register') }}" class="btn btn-outline-primary">Register</a>
