@@ -49,7 +49,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-12 text-center">
-                    <p class="mb-0">&copy; {{ date('Y') }} Student Portal. All rights reserved.</p>
+                    <p class="mb-0">&copy; {{ date('Y') }} Laravel CRUD. All rights reserved.</p>
                 </div>
             </div>
         </div>
