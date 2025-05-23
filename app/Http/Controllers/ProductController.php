@@ -23,14 +23,11 @@ class ProductController extends Controller
  return view('products.create');
  }
 
- public function store(StoreProductRequest $request) :
-RedirectResponse
+ public function store(StoreProductRequest $request) : RedirectResponse
  {
  $data = $request->validated();
 
-
  if ($request->hasFile('image')) {
-
  $imagePath = $request->file('image')->store('products', 'public');
  $data['image'] = $imagePath;
  }
